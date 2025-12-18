@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Camera & Đèn Năng Lượng Mặt Trời Minh Hiếu</title>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#121b2e; --muted:#9fb0d0; --text:#eaf0ff;
+      --accent:#4dd0e1; --accent2:#7c4dff; --line:rgba(255,255,255,.08);
+      --ok:#22c55e; --warn:#f59e0b; --r:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#070b14,var(--bg));color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    header{position:sticky;top:0;z-index:10;background:rgba(7,11,20,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .topbar{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background:radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
+      box-shadow:0 8px 30px rgba(124,77,255,.25)
+    }
+    .brand h1{font-size:16px;margin:0;line-height:1.2}
+    .brand small{display:block;color:var(--muted);font-weight:500}
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .chip{padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--text);display:flex;gap:8px;align-items:center}
+    input, select{background:transparent;border:none;outline:none;color:var(--text);font-size:14px}
+    select option{color:#111}
+    .btn{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);padding:10px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+    .btn.primary{border:none;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#061018;font-weight:700}
+    .btn.danger{border-color:rgba(255,99,99,.35);background:rgba(255,99,99,.10)}
+    .hero{
+      margin-top:18px;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(77,208,225,.22), transparent),
+        radial-gradient(800px 400px at 90% 0%, rgba(124,77,255,.18), transparent),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding:22px}
+    .hero h2{margin:0 0 8px;font-size:26px}
+    .hero p{margin:0 0 16px;color:var(--muted);line-height:1.55}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap}
+    .kpi{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:rgba(0,0,0,.12)}
+    .kpi b{display:block}
+    .kpi span{color:var(--muted);font-size:13px}
+    .hero-card{border:1px solid var(--line);border-radius:18px;padding:14px;background:rgba(0,0,0,.14)}
+    .hero-card h3{margin:0 0 8px;font-size:15px}
+    .hero-card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.6}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    @media (max-width: 900px){ .grid{grid-template-columns:repeat(2,1fr)} .hero .wrap{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
+    .card{border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.03);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    .thumb{
+      height:150px;background:
+        linear-gradient(135deg, rgba(77,208,225,.18), rgba(124,77,255,.14)),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.12), transparent 55%);
+      display:flex;align-items:flex-end;justify-content:space-between;padding:12px
+    }
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:var(--muted)}
+    .stock{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.12);color:#bff7cf}
+    .content{padding:12px}
+    .content h4{margin:0 0 6px}
+    .content p{margin:0 0 10px;color:var(--muted);font-size:13px;line-height:1.45}
+    .price{display:flex;align-items:baseline;gap:8px;margin:8px 0 10px}
+    .price b{font-size:18px}
+    .price s{color:rgba(234,240,255,.45);font-size:13px}
+    .row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .mini{color:var(--muted);font-size:12px}
+    .footer{margin:26px 0 10px;color:var(--muted);text-align:center;font-size:13px}
+    .drawer{
+      position:fixed;right:14px;bottom:14px;z-index:20;width:min(380px, calc(100vw - 28px));
+      border:1px solid var(--line);border-radius:18px;background:rgba(10,16,30,.92);
+      backdrop-filter:blur(10px);box-shadow:0 18px 50px rgba(0,0,0,.45);display:none
+    }
+    .drawer.open{display:block}
+    .drawer header{position:unset;background:transparent;border:0}
+    .drawer .head{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 0}
+    .drawer h3{margin:0;font-size:15px}
+    .cartlist{padding:10px 12px 12px;max-height:260px;overflow:auto}
+    .item{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);margin-top:10px}
+    .item b{font-size:14px}
+    .item .sub{color:var(--muted);font-size:12px}
+    .total{display:flex;justify-content:space-between;align-items:center;padding:0 12px 12px}
+    .floating{position:fixed;left:14px;bottom:14px;z-index:20;display:flex;flex-direction:column;gap:10px}
+    .fab{width:52px;height:52px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.06);display:grid;place-items:center;cursor:pointer}
+    .fab.primary{border:none;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#061018;font-weight:900}
+    .hint{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+    .sep{height:1px;background:var(--line);margin:12px 0}
+    code{color:#cfe1ff}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <!-- Nếu có logo thật: thay div.logo bằng <img src="images/logo.png" ...> -->
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Camera & Đèn Năng Lượng Mặt Trời Minh Hiếu</h1>
+          <small>Camera Wi-Fi • Camera NLMT/4G • Đèn NLMT • Tư vấn & lắp đặt</small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="chip" title="Tìm theo tên sản phẩm">🔎 <input id="q" placeholder="Tìm camera, đèn..." /></div>
+        <div class="chip" title="Lọc theo loại">
+          🧩
+          <select id="cat">
+            <option value="all">Tất cả</option>
+            <option value="camera">Camera</option>
+            <option value="solar-light">Đèn NLMT</option>
+          </select>
+        </div>
+
+        <button class="btn" id="openCart">🛒 Giỏ <span id="cartCount" class="mini">(0)</span></button>
+        <a class="btn primary" id="callBtn" href="tel:0919476229">📞 0919 476 229</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <h2>Giải pháp an ninh & chiếu sáng tiết kiệm điện</h2>
+          <p>Chọn nhanh camera trong/ngoài trời, camera NLMT/4G cho khu vực không có Wi-Fi và đèn năng lượng mặt trời cho sân vườn, cổng, đường đi.</p>
+          <div class="kpis">
+            <div class="kpi"><b>✅ Bảo hành</b><span>12–24 tháng</span></div>
+            <div class="kpi"><b>🚚 Giao nhanh</b><span>Hỗ trợ COD</span></div>
+            <div class="kpi"><b>🛠️ Lắp đặt</b><span>Tuỳ khu vực</span></div>
+          </div>
+          <div class="sep"></div>
+          <div class="row">
+            <button class="btn primary" id="scrollProducts">🛍️ Xem sản phẩm</button>
+            <a class="btn" href="https://zalo.me/0919476229" target="_blank" rel="noopener">💬 Chat Zalo</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Liên hệ đặt hàng</h3>
+          <ul>
+            <li>Hotline/Zalo: <b>0919 476 229</b></li>
+            <li>Gửi nội dung đơn hàng qua Zalo (shop hỗ trợ nhanh)</li>
+            <li>Nhận tư vấn miễn phí, báo giá rõ ràng</li>
+          </ul>
+          <div class="sep"></div>
+          <div class="mini">
+            <b>Gợi ý:</b> Bạn có thể thay ảnh sản phẩm bằng ảnh thật (mục <code>img</code> trong data).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h3 id="products" style="margin:18px 0 8px;">Sản phẩm</h3>
+    <div class="mini" style="margin-bottom:12px;">10 sản phẩm mẫu — bạn đổi tên/giá/ảnh theo hàng bạn bán.</div>
+
+    <section class="grid" id="grid"></section>
+
+    <div class="footer">
+      © <span id="year"></span> Camera & Đèn Năng Lượng Mặt Trời Minh Hiếu • Zalo 0919 476 229
+    </div>
+  </main>
+
+  <div class="floating">
+    <a class="fab primary" id="zaloBtn" href="https://zalo.me/0919476229" target="_blank" rel="noopener" title="Chat Zalo">Z</a>
+    <button class="fab" id="toTop" title="Lên đầu trang">↑</button>
+    <div class="hint">Zalo / Top</div>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-live="polite">
+    <div class="head">
+      <h3>🛒 Giỏ hàng</h3>
+      <button class="btn danger" id="closeCart">✕ Đóng</button>
+    </div>
+    <div class="cartlist" id="cartlist"></div>
+    <div class="total">
+      <div>
+        <div class="mini">Tổng tạm tính</div>
+        <b id="total">0đ</b>
+      </div>
+      <button class="btn primary" id="checkout">📦 Đặt hàng qua Zalo</button>
+    </div>
+  </aside>
+
+  <script>
+    const PHONE = "0919476229";
+    const ZALO_LINK = "https://zalo.me/0919476229";
+
+    // Nếu bạn có ảnh thật: đặt file vào thư mục images/ và sửa img: "images/ten-anh.jpg"
+    const PRODUCTS = [
+  {
+    id: "den-nlmt-300w",
+    name: "Đèn Năng Lượng Mặt Trời 300W",
+    cat: "solar-light",
+    img: "images/den-300w.jpg",
+    desc: "Đèn NLMT công suất lớn 300W, sáng mạnh, chống nước IP66, phù hợp sân, cổng, nhà xưởng.",
+    price: 1350000,
+    old: 1600000,
+    badge: "300W • IP66",
+    stock: true
+  },
+  {
+    id: "bong-tron-120w",
+    name: "Đèn Năng Lượng Mặt Trời Bóng Tròn 120W",
+    cat: "solar-light",
+    img: "images/bong-tron-120w.jpg",
+    desc: "Bóng tròn 120W ánh sáng đều, tiết kiệm điện, lắp trần, hiên nhà, hành lang.",
+    price: 650000,
+    old: 800000,
+    badge: "120W • Bóng tròn",
+    stock: true
+  },
+  {
+    id: "camera-ptz",
+    name: "Camera Wi-Fi Quay Quét Ngoài Trời",
+    cat: "camera",
+    img: "images/camera-ptz.jpg",
+    desc: "Camera quay quét 360°, xem đêm màu, cảnh báo chuyển động, xem trên điện thoại.",
+    price: 1250000,
+    old: 1500000,
+    badge: "PTZ • Wi-Fi",
+    stock: true
+  }
+];
+
+
+    const fmt = (n) => n.toLocaleString("vi-VN") + "đ";
+    const $ = (id) => document.getElementById(id);
+
+    const CART_KEY = "minhhieu_shop_cart_v1";
+    const loadCart = () => JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const saveCart = (c) => localStorage.setItem(CART_KEY, JSON.stringify(c));
+    const cartCount = (cart) => Object.values(cart).reduce((a,b)=>a+b,0);
+    const cartTotal = (cart) => Object.entries(cart).reduce((sum,[id,qty])=>{
+      const p = PRODUCTS.find(x=>x.id===id);
+      return sum + (p ? p.price*qty : 0);
+    },0);
+
+    function addToCart(id){
+      const cart = loadCart();
+      cart[id] = (cart[id]||0) + 1;
+      saveCart(cart);
+      renderCart();
+      toast("Đã thêm vào giỏ ✅");
+    }
+    function removeFromCart(id){
+      const cart = loadCart();
+      delete cart[id];
+      saveCart(cart);
+      renderCart();
+    }
+    function setQty(id, qty){
+      const cart = loadCart();
+      if(qty<=0) delete cart[id];
+      else cart[id]=qty;
+      saveCart(cart);
+      renderCart();
+    }
+
+    function renderProducts(){
+      const q = $("q").value.trim().toLowerCase();
+      const cat = $("cat").value;
+
+      const filtered = PRODUCTS.filter(p=>{
+        const okCat = cat==="all" ? true : p.cat===cat;
+        const okQ = !q ? true : (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+        return okCat && okQ;
+      });
+
+      $("grid").innerHTML = filtered.map(p=>{
+        const bg = p.img ? `background-image:url('${p.img}');background-size:cover;background-position:center;` : "";
+        return `
+          <article class="card">
+            <div class="thumb" style="${bg}">
+              <span class="tag">${p.badge}</span>
+              <span class="stock">${p.stock ? "Còn hàng" : "Hết hàng"}</span>
+            </div>
+            <div class="content">
+              <h4>${p.name}</h4>
+              <p>${p.desc}</p>
+              <div class="price">
+                <b>${fmt(p.price)}</b>
+                <s>${fmt(p.old)}</s>
+              </div>
+              <div class="row">
+                <button class="btn primary" ${p.stock ? "" : "disabled"} onclick="addToCart('${p.id}')">➕ Thêm</button>
+                <a class="btn" href="tel:${PHONE}">📞 Gọi</a>
+              </div>
+              <div class="mini" style="margin-top:10px">Mã SP: <code>${p.id}</code></div>
+            </div>
+          </article>
+        `;
+      }).join("") || `<div class="mini">Không tìm thấy sản phẩm phù hợp.</div>`;
+    }
+
+    function renderCart(){
+      const cart = loadCart();
+      $("cartCount").textContent = `(${cartCount(cart)})`;
+
+      const entries = Object.entries(cart);
+      if(entries.length===0){
+        $("cartlist").innerHTML = `<div class="mini">Giỏ hàng trống. Thêm vài sản phẩm nhé 🙂</div>`;
+      }else{
+        $("cartlist").innerHTML = entries.map(([id,qty])=>{
+          const p = PRODUCTS.find(x=>x.id===id);
+          if(!p) return "";
+          return `
+            <div class="item">
+              <div>
+                <b>${p.name}</b>
+                <div class="sub">${fmt(p.price)} • SL:
+                  <input type="number" min="1" value="${qty}" style="width:70px"
+                    onchange="setQty('${id}', parseInt(this.value||1,10))" />
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div class="sub">Thành tiền</div>
+                <b>${fmt(p.price*qty)}</b>
+                <div style="height:8px"></div>
+                <button class="btn danger" onclick="removeFromCart('${id}')">Xoá</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+      $("total").textContent = fmt(cartTotal(cart));
+    }
+
+    const drawer = $("drawer");
+    $("openCart").addEventListener("click", ()=> drawer.classList.add("open"));
+    $("closeCart").addEventListener("click", ()=> drawer.classList.remove("open"));
+
+    $("q").addEventListener("input", renderProducts);
+    $("cat").addEventListener("change", renderProducts);
+
+    $("scrollProducts").addEventListener("click", ()=> $("products").scrollIntoView({behavior:"smooth"}));
+    $("toTop").addEventListener("click", ()=> window.scrollTo({top:0,behavior:"smooth"}));
+
+    $("checkout").addEventListener("click", ()=>{
+      const cart = loadCart();
+      const entries = Object.entries(cart);
+      if(entries.length===0){ toast("Giỏ hàng đang trống."); return; }
+
+      const lines = entries.map(([id,qty])=>{
+        const p = PRODUCTS.find(x=>x.id===id);
+        return `- ${p?.name || id} x${qty} (${fmt((p?.price||0)*qty)})`;
+      }).join("\n");
+
+      const message =
+`Chào shop Minh Hiếu, mình muốn đặt:
+${lines}
+Tổng: ${fmt(cartTotal(cart))}
+Tên:
+Địa chỉ:
+Ghi chú:`;
+
+      navigator.clipboard?.writeText(message).catch(()=>{});
+      window.open(ZALO_LINK, "_blank");
+      toast("Đã copy nội dung đơn vào clipboard. Mở Zalo để gửi ✅");
+    });
+
+    let toastTimer;
+    function toast(text){
+      clearTimeout(toastTimer);
+      let el = document.getElementById("toast");
+      if(!el){
+        el = document.createElement("div");
+        el.id="toast";
+        el.style.position="fixed";
+        el.style.left="50%";
+        el.style.bottom="86px";
+        el.style.transform="translateX(-50%)";
+        el.style.padding="10px 12px";
+        el.style.border="1px solid var(--line)";
+        el.style.borderRadius="999px";
+        el.style.background="rgba(0,0,0,.55)";
+        el.style.backdropFilter="blur(8px)";
+        el.style.color="var(--text)";
+        el.style.zIndex="50";
+        el.style.fontSize="13px";
+        document.body.appendChild(el);
+      }
+      el.textContent = text;
+      el.style.opacity="1";
+      toastTimer = setTimeout(()=> el.style.opacity="0", 1800);
+    }
+
+    $("year").textContent = new Date().getFullYear();
+    $("callBtn").href = `tel:${PHONE}`;
+    $("zaloBtn").href = ZALO_LINK;
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
