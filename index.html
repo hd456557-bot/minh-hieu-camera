@@ -21,18 +21,35 @@
   background:#f3f6fb;
   color:#0f172a;
 }
-    header{
+  header{
   position:sticky;
   top:0;
   z-index:10;
-  background:linear-gradient(
+  background: linear-gradient(
     180deg,
-    rgba(15,76,107,.85),
-    rgba(11,59,88,.75)
+    #e9f5fb,
+    #f6fbfe
   );
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.18);
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
+header,
+header h1,
+header small,
+header a,
+header span,
+header input,
+header select{
+  color:#111 !important;
+}
+header .chip{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.1);
+}
+
+header input::placeholder{
+  color:#666;
+}
+
     .logo{
       width:38px;height:38px;border-radius:12px;
       background: var(--bg);
@@ -457,6 +474,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
