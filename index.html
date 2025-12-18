@@ -96,20 +96,6 @@
     .hint{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
     .sep{height:1px;background:var(--line);margin:12px 0}
     code{color:#cfe1ff}
-    /* ===== FIX NỀN HERO MÀU XANH ===== */
-.hero,
-.hero * {
-  background-color: transparent !important;
-}
-
-.hero{
-  background: linear-gradient(
-    135deg,
-    #0f3c5f,
-    #0b4b6b,
-    #083344
-  ) !important;
-}
   </style>
 </head>
 <body>
@@ -204,7 +190,20 @@
       <button class="btn primary" id="checkout">📦 Đặt hàng qua Zalo</button>
     </div>
   </aside>
+ /* ===== FIX NỀN HERO MÀU XANH ===== */
+.hero,
+.hero * {
+  background-color: transparent !important;
+}
 
+.hero{
+  background: linear-gradient(
+    135deg,
+    #0f3c5f,
+    #0b4b6b,
+    #083344
+  ) !important;
+}
   <script>
     const PHONE = "0919476229";
     const ZALO_LINK = "https://zalo.me/0919476229";
@@ -417,6 +416,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
