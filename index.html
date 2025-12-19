@@ -351,11 +351,15 @@ header input::placeholder{
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.6);
-  display: flex;
+  display: none;            /* 👈 THÊM DÒNG NÀY */
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
+#productModal.show {
+  display: flex;
+}
+
 
 #productModal .modal-content {
   background: #fff;
@@ -784,6 +788,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
