@@ -67,6 +67,46 @@ header input::placeholder{
   color:#666;
 }
 
+
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+
+.modal.show{
+  display: block;
+}
+
+.modal-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.modal-box{
+  position: relative;
+  background: #fff;
+  max-width: 520px;
+  margin: 6vh auto;
+  padding: 16px;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.modal-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+    
     .logo{
       width:38px;height:38px;border-radius:12px;
       background: var(--bg);
@@ -309,6 +349,18 @@ header input::placeholder{
   </style>
 
 </head>
+
+  
+  <div class="modal" id="productModal">
+  <div class="modal-overlay" onclick="closeModal()"></div>
+
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+  
 <body>
   <header>
     <div class="container topbar">
@@ -517,7 +569,8 @@ header input::placeholder{
   : "";
 ;
         return `
-          <article class="card">
+         <article class="card" onclick="openProduct('${p.id}')" style="cursor:pointer">
+
             <div class="thumb" style="${bg}">
               <span class="tag">${p.badge}</span>
               <span class="stock">${p.stock ? "Còn hàng" : "Hết hàng"}</span>
@@ -540,6 +593,41 @@ header input::placeholder{
       }).join("") || `<div class="mini">Không tìm thấy sản phẩm phù hợp.</div>`;
     }
 
+
+
+function openProduct(id){
+  const p = PRODUCTS.find(item => item.id === id);
+  if(!p) return;
+
+  document.getElementById("modalContent").innerHTML = `
+    <img src="${p.img}" style="width:100%;border-radius:12px;margin-bottom:12px">
+
+    <h3>${p.name}</h3>
+    <p style="color:#666">${p.desc}</p>
+
+    <p style="font-size:20px;font-weight:700;color:#0068ff">
+      ${fmt(p.price)}
+    </p>
+
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <a class="btn btn-zalo" href="https://zalo.me/0919476229" target="_blank">
+        💬 Chat Zalo
+      </a>
+      <a class="btn primary" href="tel:${PHONE}">
+        📞 Gọi ngay
+      </a>
+    </div>
+  `;
+
+  document.getElementById("productModal").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("productModal").classList.remove("show");
+}
+
+
+    
     function renderCart(){
       const cart = loadCart();
       $("cartCount").textContent = `(${cartCount(cart)})`;
@@ -641,6 +729,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
