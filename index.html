@@ -346,6 +346,34 @@ header input::placeholder{
   }
 }
 
+/* ===== FIX MODAL CHI TIẾT SẢN PHẨM ===== */
+#productModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#productModal .modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 520px;
+  max-height: 90vh;   /* ⭐ QUAN TRỌNG */
+  overflow-y: auto;   /* ⭐ QUAN TRỌNG */
+  border-radius: 14px;
+  padding: 16px;
+}
+
+#modalContent img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+
+    
   </style>
 
 </head>
@@ -756,6 +784,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
