@@ -192,7 +192,92 @@ header input::placeholder{
     .sep{height:1px;background:var(--line);margin:12px 0}
     code{color:#cfe1ff}
   </style>
-  
+  /* ===== TỐI ƯU MOBILE ===== */
+@media (max-width: 600px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  /* Header gọn lại */
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .brand small {
+    font-size: 12px;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .chip input {
+    width: 120px;
+    font-size: 13px;
+  }
+
+  /* Hero */
+  .hero h2 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  /* Card sản phẩm */
+  .thumb {
+    height: 180px;
+  }
+
+  .content h4 {
+    font-size: 15px;
+  }
+
+  .content p {
+    font-size: 13px;
+  }
+
+  .price b {
+    font-size: 17px;
+  }
+
+  /* Nút bấm to hơn cho dễ chạm */
+  .btn {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .btn.primary {
+    font-size: 15px;
+  }
+
+  /* Floating nút Zalo + Top */
+  .fab {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
+  }
+
+  /* Giỏ hàng */
+  .drawer {
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .cartlist {
+    max-height: 50vh;
+  }
+}
+
 </head>
 <body>
   <header>
@@ -498,6 +583,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
