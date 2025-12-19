@@ -600,24 +600,42 @@ function openProduct(id){
   if(!p) return;
 
   document.getElementById("modalContent").innerHTML = `
-    <img src="${p.img}" style="width:100%;border-radius:12px;margin-bottom:12px">
+  <img src="${p.img}"
+       style="width:100%;border-radius:12px;margin-bottom:12px">
 
-    <h3>${p.name}</h3>
-    <p style="color:#666">${p.desc}</p>
+  <h3 style="margin:0 0 6px">${p.name}</h3>
 
-    <p style="font-size:20px;font-weight:700;color:#0068ff">
-      ${fmt(p.price)}
-    </p>
+  <p style="color:#666;line-height:1.5">
+    ${p.desc}
+  </p>
 
-    <div style="display:flex;gap:10px;margin-top:12px">
-      <a class="btn btn-zalo" href="https://zalo.me/0919476229" target="_blank">
-        💬 Chat Zalo
-      </a>
-      <a class="btn primary" href="tel:${PHONE}">
-        📞 Gọi ngay
-      </a>
-    </div>
-  `;
+  <p style="font-size:22px;font-weight:700;color:#0068ff;margin:10px 0">
+    ${fmt(p.price)}
+    <s style="font-size:14px;color:#999;margin-left:8px">
+      ${fmt(p.old)}
+    </s>
+  </p>
+
+  <p style="font-size:14px;color:#333">
+    👉 Mã sản phẩm: <b>${p.id}</b><br>
+    👉 Phân loại: <b>${p.badge}</b><br>
+    👉 Tình trạng: <b>${p.stock ? "Còn hàng" : "Hết hàng"}</b>
+  </p>
+
+  <div style="display:flex;gap:10px;margin-top:14px">
+    <a class="btn btn-zalo"
+       href="https://zalo.me/0919476229"
+       target="_blank">
+       💬 Chat Zalo
+    </a>
+
+    <a class="btn primary"
+       href="tel:${PHONE}">
+       📞 Gọi ngay
+    </a>
+  </div>
+`;
+
 
   document.getElementById("productModal").classList.add("show");
 }
@@ -729,6 +747,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
