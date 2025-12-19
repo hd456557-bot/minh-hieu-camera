@@ -26,6 +26,18 @@ a.btn{
   text-decoration: none;
 }
 
+.btn-zalo{
+  background: #ffffff;                 /* nền trắng */
+  color: #0068ff;                      /* xanh Zalo */
+  border: 2px solid #0068ff;           /* viền xanh */
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+.btn-zalo:hover{
+  background: #0068ff;
+  color: #ffffff;
+}
     
  header{
   background: linear-gradient(
@@ -340,7 +352,10 @@ header input::placeholder{
           <div class="sep"></div>
           <div class="row">
             <button class="btn primary" id="scrollProducts">🛍️ Xem sản phẩm</button>
-            <a class="btn" href="https://zalo.me/0919476229" target="_blank" rel="noopener">💬 Chat Zalo</a>
+            <a class="btn btn-zalo" href="https://zalo.me/0919476229" target="_blank" rel="noopener">
+  💬 Chat Zalo
+</a>
+
           </div>
         </div>
 
@@ -604,6 +619,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
