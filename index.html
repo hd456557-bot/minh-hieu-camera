@@ -473,7 +473,10 @@ header input::placeholder{
       });
 
       $("grid").innerHTML = filtered.map(p=>{
-        const bg = p.img ? `background-image:url('${p.img}');background-size:cover;background-position:center;` : "";
+       const bg = p.img
+  ? `background-image:url('${p.img}');`
+  : "";
+;
         return `
           <article class="card">
             <div class="thumb" style="${bg}">
@@ -599,6 +602,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
