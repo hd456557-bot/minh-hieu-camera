@@ -154,25 +154,22 @@ header input::placeholder{
     @media (max-width: 900px){ .grid{grid-template-columns:repeat(2,1fr)} .hero .wrap{grid-template-columns:1fr} }
     @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
     .card{border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.03);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
- .thumb{
-  height: 180px;               /* có thể tăng 200px nếu thích */
-  background-size: 100% auto;  /* phủ ngang */
+.thumb{
+  height: 200px;                 /* desktop */
+  background-size: 100% auto;    /* phủ ngang */
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
-}
-
-.thumb{
-  height: 200px;
-}
-.thumb{
   border-bottom: 1px solid var(--line);
 }
+
+/* Mobile */
 @media (max-width: 600px){
   .thumb{
     height: 160px;
   }
 }
+
 
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:var(--muted)}
     .stock{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.12);color:#bff7cf}
@@ -601,6 +598,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
