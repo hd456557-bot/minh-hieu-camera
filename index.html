@@ -154,12 +154,13 @@ header input::placeholder{
     @media (max-width: 900px){ .grid{grid-template-columns:repeat(2,1fr)} .hero .wrap{grid-template-columns:1fr} }
     @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
     .card{border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.03);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
-    .thumb{
-      height:150px;background:
-        linear-gradient(135deg, rgba(77,208,225,.18), rgba(124,77,255,.14)),
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.12), transparent 55%);
-      display:flex;align-items:flex-end;justify-content:space-between;padding:12px
-    }
+   .thumb{
+  height: 180px;              /* có thể tăng/giảm */
+  background-size: contain;   /* 👈 QUAN TRỌNG */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:var(--muted)}
     .stock{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.12);color:#bff7cf}
     .content{padding:12px}
@@ -584,6 +585,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
