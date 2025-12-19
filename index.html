@@ -155,20 +155,20 @@ header input::placeholder{
     @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
     .card{border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.03);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
 .thumb{
-  height: 200px;                 /* desktop */
-  background-size: 100% auto;    /* phủ ngang */
+  height: 240px;                /* 👈 tăng chiều cao */
+  background-size: contain;     /* 👈 thấy trọn sản phẩm */
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
   border-bottom: 1px solid var(--line);
 }
 
-/* Mobile */
 @media (max-width: 600px){
   .thumb{
-    height: 160px;
+    height: 180px;
   }
 }
+
 
 
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:var(--muted)}
@@ -598,6 +598,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
