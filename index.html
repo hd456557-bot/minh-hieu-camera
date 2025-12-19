@@ -583,8 +583,17 @@ header input::placeholder{
                 <s>${fmt(p.old)}</s>
               </div>
               <div class="row">
-                <button class="btn primary" ${p.stock ? "" : "disabled"} onclick="addToCart('${p.id}')">➕ Thêm</button>
-                <a class="btn" href="tel:${PHONE}">📞 Gọi</a>
+                <button class="btn primary ${p.stock ? "" : "disabled"}"
+  onclick="event.stopPropagation(); addToCart('${p.id}')">
+  ➕ Thêm
+</button>
+
+                <a class="btn"
+   href="tel:${PHONE}"
+   onclick="event.stopPropagation()">
+   📞 Gọi
+</a>
+
               </div>
               <div class="mini" style="margin-top:10px">Mã SP: <code>${p.id}</code></div>
             </div>
@@ -747,6 +756,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
