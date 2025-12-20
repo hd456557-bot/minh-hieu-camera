@@ -112,14 +112,13 @@ header input::placeholder{
 }
 
     
-  .logo{
-    width: 100%;          /* 👈 bung ngang */
-    max-width: 520px;     /* 👈 giới hạn desktop (tăng/giảm tuỳ ý) */
-    height: auto;         /* giữ tỉ lệ ảnh */
+.logo{
+    width: 100%;
+    max-width: 100%;   /* ❗ bỏ giới hạn 520px */
+    height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    background: none;
 }
+
 
 @media (max-width:600px){
     .logo{
@@ -829,6 +828,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
