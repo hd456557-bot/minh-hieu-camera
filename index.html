@@ -113,7 +113,9 @@ header input::placeholder{
 
 .logo{
     width: 100%;
-    height: auto;
+    height: 140px;           /* 👈 giảm chiều cao desktop (chỉnh 120–160 tuỳ ý) */
+    object-fit: cover;       /* 👈 cho phép cắt ảnh */
+    object-position: top;    /* 👈 giữ phần trên, CẮT PHÍA DƯỚI */
 }
 
 
@@ -832,6 +834,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
