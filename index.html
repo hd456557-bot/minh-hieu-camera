@@ -105,18 +105,25 @@ header input::placeholder{
   cursor: pointer;
 }
 
+.brand{
+    display: flex;
+    flex-direction: column;   /* logo trên – chữ dưới */
+    align-items: flex-start;
+}
 
     
-   .logo{
-    height: 100px;          /* chiều cao logo */
-    width: auto;           /* giữ tỉ lệ ảnh */
-    border-radius: 8px;    /* bo góc nhẹ (hoặc 50% nếu muốn tròn) */
+  .logo{
+    width: 100%;          /* 👈 bung ngang */
+    max-width: 520px;     /* 👈 giới hạn desktop (tăng/giảm tuỳ ý) */
+    height: auto;         /* giữ tỉ lệ ảnh */
+    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    background: none;      /* ❗ bỏ background */
+    background: none;
 }
+
 @media (max-width:600px){
     .logo{
-        height: 48px;
+        max-width: 100%;
     }
 }
 
@@ -822,6 +829,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
