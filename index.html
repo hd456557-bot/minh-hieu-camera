@@ -114,10 +114,12 @@ header input::placeholder{
     
 .logo{
     width: 100%;
-    max-width: 100%;   /* ❗ bỏ giới hạn 520px */
+    max-height: 160px;   /* 👈 GIẢM CHIỀU CAO (bạn chỉnh số này) */
     height: auto;
+    object-fit: cover;  /* 👈 cắt bớt chiều cao, không méo */
     border-radius: 8px;
 }
+
 
 
 @media (max-width:600px){
@@ -828,6 +830,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
