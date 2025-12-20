@@ -113,11 +113,13 @@ header input::placeholder{
 
 .logo{
     width: 100%;
-    max-height: 160px;
     height: auto;
-    object-fit: contain;   /* 👈 không cắt */
-    background: #e8f5ee;   /* nền cho đẹp (tuỳ chọn) */
+    max-height: 160px;
+    object-fit: contain;     /* 👈 GIỮ ĐỘ PHÂN GIẢI */
+    object-position: center;
+    background: #e8f5ee;     /* nền giống header */
 }
+
 
 
 
@@ -125,7 +127,7 @@ header input::placeholder{
 
 @media (max-width:600px){
     .logo{
-        max-height: 120px;
+        max-height: 100px;
         object-position: top center;
     }
 }
@@ -833,6 +835,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
