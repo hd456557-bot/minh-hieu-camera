@@ -115,18 +115,21 @@ header input::placeholder{
     width: 100%;
     max-height: 160px;
     height: auto;
-    object-fit: cover;
-    object-position: top center; /* 👈 GIỮ PHẦN TRÊN */
+    object-fit: contain;   /* 👈 không cắt */
+    background: #e8f5ee;   /* nền cho đẹp (tuỳ chọn) */
 }
+
 
 
 
 
 @media (max-width:600px){
     .logo{
-        max-width: 100%;
+        max-height: 120px;
+        object-position: top center;
     }
 }
+
 
     .brand h1{font-size:16px;margin:0;line-height:1.2}
     .brand small{display:block;color:var(--muted);font-weight:500}
@@ -830,6 +833,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
