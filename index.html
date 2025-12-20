@@ -241,10 +241,21 @@ header input::placeholder{
     .mini{color:var(--muted);font-size:12px}
     .footer{margin:26px 0 10px;color:var(--muted);text-align:center;font-size:13px}
     .drawer{
-      position:fixed;right:14px;bottom:14px;z-index:20;width:min(380px, calc(100vw - 28px));
-      border:1px solid var(--line);border-radius:18px;background:rgba(10,16,30,.92);
-      backdrop-filter:blur(10px);box-shadow:0 18px 50px rgba(0,0,0,.45);display:none
-    }
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 20;
+    width: min(380px, calc(100vw - 28px));
+    border: 1px solid var(--line);
+    border-radius: 18px;
+
+    background: #ffffff;        /* 👈 đổi nền trắng */
+    color: #000000;             /* 👈 chữ đen */
+
+    box-shadow: 0 18px 50px rgba(0,0,0,.25);
+    display: none;
+}
+
     .drawer.open{display:block}
     .drawer header{position:unset;background:transparent;border:0}
     .drawer .head{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 0}
@@ -801,6 +812,7 @@ Ghi chú:`;
   </script>
 </body>
 </html>
+
 
 
 
